@@ -45,10 +45,10 @@ const deleteCanvas = async(req,res)=>{
 
 const updateCanvas = async(req,res)=>{
     const email = req.email;
-    const {elements,name,canvasId} = req.body;
+    const {elements,canvasId} = req.body;
 
     try {
-        const message = await Canvas.updateCanvas(email,name,canvasId,elements)
+        const message = await Canvas.updateCanvas(email,canvasId,elements)
         res.status(200).json(message);
     } catch (error) {
         res.status(400).json({message: error.message});

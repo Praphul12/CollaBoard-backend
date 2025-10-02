@@ -82,7 +82,7 @@ canvasSchema.statics.deleteCanvas = async function(email,canvasId){
     }
 }
 
-canvasSchema.statics.updateCanvas = async function(email,name,canvasId,elements){
+canvasSchema.statics.updateCanvas = async function(email,canvasId,elements){
     try {
         const user = await userModel.getUser(email);
         if(!user){
