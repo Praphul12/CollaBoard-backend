@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
+        unique:true,
     },
     password : {
         type:String,
@@ -45,7 +46,7 @@ userSchema.statics.createUser = async function (name,email,password) {
     }
 }
 
-userSchema.statics.loginUser = async function (name,email,password) {
+userSchema.statics.loginUser = async function (email,password) {
 
     try{
         const user = await this.findOne({email});
@@ -54,7 +55,7 @@ userSchema.statics.loginUser = async function (name,email,password) {
             throw new Error("User not found");
         }
     
-    
+        
         const match = await bcrypt.compare(password,user.password);
 
         if(!match)
@@ -69,6 +70,16 @@ userSchema.statics.loginUser = async function (name,email,password) {
     }  
 }
 
-const userModel = mongoose.model('UserData',userSchema);
+userSchema.statics.getUser = async function(email){
+    try{
+        const user  = await this.findOne({email});
+        return user;
+    }
+    catch(error){
+        throw new Error(error.message);
+    }
+}
+
+const userModel = mongoose.model('Users',userSchema);
 
 module.exports = userModel;
