@@ -4,7 +4,7 @@ const JWT = require("jsonwebtoken");
 const createUser = async(req,res) =>{
     try{
         const {name,email,password} = req.body;
-        console.log(req.body);
+        // console.log(req.body);
         const newUser =  await userModel.createUser(name,email,password);
         res.status(201).json(newUser);
 

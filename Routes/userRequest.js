@@ -5,7 +5,7 @@ const authorize = require('../Middlewares/authorization');
 const router = express.Router();
 
 router.post('/login',(req,res)=>{
-    console.log(req.body);
+    // console.log(req.body);
     login(req,res)
 });
 
