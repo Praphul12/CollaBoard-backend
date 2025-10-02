@@ -11,7 +11,7 @@ const port = process.env.PORT || 5000;
 // --- MIDDLEWARE ---
 
 app.use(cors({
-  origin: "https://white-board-rosy.vercel.app",
+  origin: "https://white-board-cw8od8ysl-praphuls-projects.vercel.app",
   credentials: true,
 }));
 
@@ -29,7 +29,7 @@ const { Server } = require("socket.io");
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://white-board-rosy.vercel.app",
+    origin: "https://white-board-cw8od8ysl-praphuls-projects.vercel.app",
     methods: ["GET", "POST","PUT","DELETE"],
     credentials: true,
   },
